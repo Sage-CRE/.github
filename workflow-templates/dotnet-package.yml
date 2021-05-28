@@ -1,0 +1,48 @@
+name: .NET Package
+on:
+  push:
+    paths-ignore:
+    - 'README.md'
+    branches: 
+    - $default-branch
+  pull_request:
+    paths-ignore:
+    - 'README.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # use release mode for all steps
+    env:
+      config: 'Release'
+    strategy:
+      matrix:
+        # latest dotnet version at time of development + latest dotnet version at time of workflow
+        dotnet-version: [ '5.0.103', '5.0.x' ]
+      fail-fast: false
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK ${{ matrix.dotnet }}
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    - name: Install dependencies (Like NuGet packages)
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration $config --no-restore
+
+    - name: Start dependencies for integration tests (docker-compose)
+      run: |
+        docker-compose -f docker-compose-integration.yml up --detach
+
+    - name: Unit Test
+      run: dotnet test --configuration $config --no-restore --no-build --verbosity normal
+
+    - name: Integration Test
+      run: newman run test/local-service.postman_collection.json

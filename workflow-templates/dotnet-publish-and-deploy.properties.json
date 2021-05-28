@@ -1,0 +1,11 @@
+{
+    "name": ".NET CD Workflow",
+    "description": "Sage-CRE Organization .NET CD workflow template.",
+    "iconName": "logo-sage-green",
+    "categories": [
+        "C#"
+    ],
+    "filePatterns": [
+        "^Dockerfile$"
+    ]
+}

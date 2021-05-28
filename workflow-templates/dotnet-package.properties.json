@@ -1,0 +1,13 @@
+{
+    "name": ".NET CI Workflow",
+    "description": "Sage-CRE Organization .NET CI workflow template.",
+    "iconName": "logo-sage-green",
+    "categories": [
+        "C#"
+    ],
+    "filePatterns": [
+        "^.*.sln$",
+        "^docker-compose-integration\\.yml$",
+        "^test/local-service\\.postman_collection\\.json$"
+    ]
+}
