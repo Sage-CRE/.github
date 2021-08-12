@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         # latest dotnet version at time of development + latest dotnet version at time of workflow
-        dotnet-version: [ '5.0.103', '5.0.x' ]
+        dotnet-version: [ '5.0.x' ]
       fail-fast: false
 
     steps:
