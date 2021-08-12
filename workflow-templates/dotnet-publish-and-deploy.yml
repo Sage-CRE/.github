@@ -3,13 +3,12 @@ name: .NET Publish and Deploy
 on:
   push:
     branches:
-      - $default-branch
+      - main
+  workflow_dispatch:
 
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     # use release mode for all steps
     env:
@@ -37,3 +36,4 @@ jobs:
           app-name: ${{ env.app-name }}
           publish-profile: ${{ env.publish-profile }}
           images: '${{ env.registry }}/${{ env.image-name }}:${{ github.run_number }}'
+          
