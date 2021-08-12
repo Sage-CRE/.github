@@ -3,7 +3,7 @@ name: .NET Publish and Deploy
 on:
   push:
     branches:
-      - main
+      - $default-branch
   workflow_dispatch:
 
 jobs:
@@ -36,4 +36,3 @@ jobs:
           app-name: ${{ env.app-name }}
           publish-profile: ${{ env.publish-profile }}
           images: '${{ env.registry }}/${{ env.image-name }}:${{ github.run_number }}'
-          
