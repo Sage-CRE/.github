@@ -13,6 +13,6 @@
 
 ### [Visit the private GitHub Pages site for this organization](https://urban-tribble-c7dc028f.pages.github.io/)
 
-Ping Kery/Nick/Cathay if you don't have the appropriate level of access you need for this organization.
+Ping Kery/Nick/Cathay if you don't have the appropriate level of access for this organization.
 
 Visit the [Docs Repository here](https://github.com/Sage-CRE/docs)!
